@@ -1,0 +1,13 @@
+# Compilados y binarios
+bin/
+obj/
+
+# Archivos de depuración y temporales
+*.o
+*.out
+*.exe
+
+# Si usas algún IDE como VS Code o CLion
+.vscode/
+.idea/
+cmake-build-*/
