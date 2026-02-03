@@ -5,6 +5,10 @@
 
 
 class MatrixSolution : public Solution {
-  private:
+ public:
+  MatrixSolution(const Matriz& resultado) : solucion_(resultado) {}
+  const Matriz& getResultado() const { return solucion_; }
+  
+ private:
   Matriz solucion_;
 };

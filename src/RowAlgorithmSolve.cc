@@ -19,11 +19,11 @@ std::unique_ptr<Solution> RowAlgorithmSolve::solve(const ProblemInstance& proble
     for (int j = 0; j < B.getColumns(); j++) {
       int suma = 0;
       for (int k = 0; k < A.getColumns(); k++) {
-        suma += A(i, k) * B(k, j);
+      suma += A[i][k] * B[k][j];
       }
-      resultado(i, j) = suma;
+      resultado[i][j] = suma;
     }
-  }
+    }
 
   //Resultado
   return std::make_unique<MatrixSolution>(resultado);

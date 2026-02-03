@@ -1,12 +1,12 @@
 
-#include "RowAlgorithmSolve.h"
+#include "ColumnAlgorithmSolve.h"
 #include "MatrixInstance.h"
 #include "MatrixSolution.h"
 
 
 using Matrix = std::vector<std::vector<int>>;
 
-std::unique_ptr<Solution> RowAlgorithmSolve::solve(const ProblemInstance& problem)  {
+std::unique_ptr<Solution> ColumnsAlgorithmSolve::solve(const ProblemInstance& problem)  {
   
   //Desglose del problema
   const MatrixInstances& matrixProblem = dynamic_cast<const MatrixInstances&>(problem);
@@ -21,11 +21,11 @@ std::unique_ptr<Solution> RowAlgorithmSolve::solve(const ProblemInstance& proble
     for (int i = 0; i < A.getRows(); i++) {
       int suma = 0;
       for (int k = 0; k < A.getColumns(); k++) {
-        suma += A(i, k) * B(k, j);
+      suma += A[i][k] * B[k][j];
       }
-      resultado(i, j) = suma;
+      resultado[i][j] = suma;
     }
-  }
+    }
 
   //Resultado
   return std::make_unique<MatrixSolution>(resultado);
