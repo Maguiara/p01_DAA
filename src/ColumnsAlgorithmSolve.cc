@@ -1,25 +1,32 @@
 
 #include "RowAlgorithmSolve.h"
 #include "MatrixInstance.h"
+#include "MatrixSolution.h"
 
 
 using Matrix = std::vector<std::vector<int>>;
 
 std::unique_ptr<Solution> RowAlgorithmSolve::solve(const ProblemInstance& problem)  {
   
+  //Desglose del problema
   const MatrixInstances& matrixProblem = dynamic_cast<const MatrixInstances&>(problem);
-  const Matrix& A = matrixProblem.getMatrixA();
-  const Matrix& B = matrixProblem.getMatrixB();
+  const Matriz& A = matrixProblem.getMatrizA();
+  const Matriz& B = matrixProblem.getMatrizB();
 
-  
-// Cambiar esto a columnas, este que esta ahora es el de filas
-  for (size_t i = 0; i < A.size(); ++i) {
-    for (size_t j = 0; j < B[0].size(); ++j) {
-      for (size_t k = 0; k < A[0].size(); ++k) {
-       
+  //Creamos la solucion
+  Matriz resultado(A.getRows(), B.getColumns());
+
+  //Algoritmo por columnas
+  for (int j = 0; j < B.getColumns(); j++) {
+    for (int i = 0; i < A.getRows(); i++) {
+      int suma = 0;
+      for (int k = 0; k < A.getColumns(); k++) {
+        suma += A(i, k) * B(k, j);
       }
+      resultado(i, j) = suma;
     }
   }
 
-  
+  //Resultado
+  return std::make_unique<MatrixSolution>(resultado);
 }
