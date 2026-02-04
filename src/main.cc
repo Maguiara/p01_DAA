@@ -13,9 +13,9 @@ int main() {
   
   // Definir las dimensiones a probar
   std::vector<int> dimensiones = {3, 4, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100,
-                                   200, 300, 400, 500, 600, 700, 800, 900, 1000};
+                                   200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000};
   
-  const int rango = 100;
+  const int rango = 100000;
   
   std::cout << "Configuración:\n";
   std::cout << "  - Rango de valores: 0 - " << rango << "\n";
@@ -35,7 +35,11 @@ int main() {
     std::string salidaArchivo = ResultFormatter::formatearParaArchivo(resultados);
     
     // Guardar en archivo (SRP: solo guarda)
-    FileWriter::guardar(salidaArchivo, "docs/resultados_benchmark.txt");
+    std::cout << "Introduzca el nombre del archivo para los resultados (sin la extension .txt)" << std::endl;
+    std::string nombre_archivo;
+    std::cin >> nombre_archivo;
+    std::string ruta_archivo = "docs/" + nombre_archivo + ".txt";
+    FileWriter::guardar(salidaArchivo, ruta_archivo);
     
   } catch (const std::exception& e) {
     std::cerr << "Error durante el benchmark: " << e.what() << std::endl;
