@@ -8,6 +8,6 @@ class MatrixGenerator {
 
  public:
 
-  std::vector<std::vector<int>> generator(const int rows, const int columns, const int range);
+  std::vector<std::vector<long long>> generator(const int rows, const int columns, const int range);
 
 };

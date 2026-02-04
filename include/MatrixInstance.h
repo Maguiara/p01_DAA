@@ -9,7 +9,7 @@ class MatrixInstances : public ProblemInstance {
 
   MatrixInstances(const Matriz& A, const Matriz& B) : matrixA_(A), matrixB_(B) {
     if(A.getColumns() != B.getRows()) {
-      throw std::invalid_argument("Las matrices introducidas no son multiplicables");
+      throw std::invalid_argument("The matrices introduced are not multipliable");
     }
   }
 

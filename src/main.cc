@@ -1,31 +1,46 @@
-#include "RowAlgorithmSolve.h"
-#include "ColumnAlgorithmSolve.h"
-#include "MatrixInstance.h"
-#include "MatrixSolution.h"
-#include "MatrixPrinter.h"
-#include "Matrix.h"
-#include "MatrixPrinter.h"
-#include "MatrixGenerator.h"
+#include "Benchmark.h"
+#include "Formatter.h"
+#include "FileSaver.h"
+#include <iostream>
+#include <vector>
 
-
-int main () {
-
-Matriz matrizA = MatrixGenerator().generator(3, 4, 100);
-Matriz matrizB = MatrixGenerator().generator(4, 3, 100);
+int main() {
   
+  std::cout << "════════════════════════════════════════════════════════\n";
+  std::cout << "  BENCHMARK: Multiplicación de Matrices\n";
+  std::cout << "  Comparación de Algoritmos (Filas vs Columnas)\n";
+  std::cout << "════════════════════════════════════════════════════════\n\n";
+  
+  // Definir las dimensiones a probar
+  std::vector<int> dimensiones = {3, 4, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100,
+                                   200, 300, 400, 500, 600, 700, 800, 900, 1000};
+  
+  const int rango = 100;
+  
+  std::cout << "Configuración:\n";
+  std::cout << "  - Rango de valores: 0 - " << rango << "\n";
+  std::cout << "  - Dimensiones: 3x3 hasta 1000x1000\n";
+  std::cout << "  - Total de pruebas: " << dimensiones.size() << "\n\n";
+  
+  try {
+    // Ejecutar benchmark (SRP: solo ejecuta)
+    Benchmark benchmark;
+    auto resultados = benchmark.ejecutar(dimensiones, rango);
+    
+    // Formatear para consola (SRP: solo formatea)
+    std::string salidaConsola = ResultFormatter::formatearParaConsola(resultados);
+    std::cout << salidaConsola;
+    
+    // Formatear para archivo (SRP: solo formatea)
+    std::string salidaArchivo = ResultFormatter::formatearParaArchivo(resultados);
+    
+    // Guardar en archivo (SRP: solo guarda)
+    FileWriter::guardar(salidaArchivo, "docs/resultados_benchmark.txt");
+    
+  } catch (const std::exception& e) {
+    std::cerr << "Error durante el benchmark: " << e.what() << std::endl;
+    return 1;
+  }
+  
+  return 0;
 }
-
-
-
-
-
-// const int row = 3;
-// Matriz matrizA(row, row);
-// MatrixPrinter().MatriPrinter(matrizA);
-
-// std::vector<std::vector<int>> relleno_matriz = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-// Matriz matrizB = relleno_matriz;
-// MatrixPrinter().MatriPrinter(matrizB);
-
-// Matriz matrizC = matrizB;
-// MatrixPrinter().MatriPrinter(matrizC);
