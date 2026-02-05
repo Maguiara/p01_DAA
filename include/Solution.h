@@ -6,4 +6,3 @@ class Solution {
 public:
     virtual ~Solution() = default;
 };
-

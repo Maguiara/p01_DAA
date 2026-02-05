@@ -13,9 +13,9 @@ int main() {
   
   // Definir las dimensiones a probar
   std::vector<int> dimensiones = {3, 4, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100,
-                                   200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000};
+                                   200, 300, 400, 500, 600, 700, 800, 900, 1000};
   
-  const int rango = 100000;
+  const int rango = 1000;
   
   std::cout << "Configuración:\n";
   std::cout << "  - Rango de valores: 0 - " << rango << "\n";

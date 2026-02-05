@@ -32,13 +32,8 @@ class Matriz {
   const int getRows() const { return rows_; }
   const int getColumns() const { return columns_; }
 
-  long long& operator()(int row, int col) { 
-    return matriz_[row * columns_ + col]; 
-  }
-  
-  const long long& operator()(int row, int col) const { 
-    return matriz_[row * columns_ + col]; 
-  }
+  long long& operator()(int row, int col) {  return matriz_[row * columns_ + col];}
+  const long long& operator()(int row, int col) const { return matriz_[row * columns_ + col]; }
 
   long long& operator[](int index) { return matriz_[index]; }
   const long long& operator[](int index) const { return matriz_[index]; }

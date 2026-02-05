@@ -1,5 +1,7 @@
 #include "MatrixGenerator.h"
 
+
+
 std::vector<long long> MatrixGenerator::generator(const int rows, const int columns, const int range) {
   //inicializamos la semilla
   srand(time(nullptr));
