@@ -14,12 +14,20 @@ std::unique_ptr<Solution> RowAlgorithmSolve::solve(const ProblemInstance& proble
   //Creamos la solucion
   Matriz resultado(A.getRows(), B.getColumns());
 
+  // Optimizacion siguiendo los cache hits
+  Matriz B_T(B.getColumns(), B.getRows());
+  for (int i = 0; i < B.getRows(); i++) {
+    for (int j = 0; j < B.getColumns(); j++) {
+        B_T(j, i) = B(i, j); 
+    }
+  }
+
   //Algoritmo por filas
   for (int i = 0; i < A.getRows(); i++) {
     for (int j = 0; j < B.getColumns(); j++) {
       long long suma = 0;
       for (int k = 0; k < A.getColumns(); k++) {
-        suma += A(i, k) * B(k, j);
+        suma += A(i, k) * B_T(j, k);
       }
       resultado(i, j) = suma;
     }
