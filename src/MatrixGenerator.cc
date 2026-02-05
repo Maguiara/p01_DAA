@@ -1,14 +1,14 @@
 #include "MatrixGenerator.h"
 
-std::vector<std::vector<long long>> MatrixGenerator::generator(const int rows, const int columns, const int range) {
+std::vector<long long> MatrixGenerator::generator(const int rows, const int columns, const int range) {
   //inicializamos la semilla
   srand(time(nullptr));
 
-  std::vector<std::vector<long long>> matriz_generada (rows, std::vector<long long>(columns));
+  std::vector<long long> matriz_generada (rows * columns);
 
   for (int i = 0; i < rows; i++) {
     for (int j = 0; j < columns; j++) {
-      matriz_generada[i][j] = rand() % (range + 1);  // Valores entre 0 y rango
+      matriz_generada[i * columns + j] = rand() % (range + 1);  // Valores entre 0 y rango
     }
   }
 

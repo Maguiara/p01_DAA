@@ -21,9 +21,9 @@ std::unique_ptr<Solution> ColumnsAlgorithmSolve::solve(const ProblemInstance& pr
     for (int i = 0; i < A.getRows(); i++) {
       int suma = 0;
       for (int k = 0; k < A.getColumns(); k++) {
-      suma += A[i][k] * B[k][j];
+      suma += A[i * k] * B[k * j];
       }
-      resultado[i][j] = suma;
+      resultado[i * j] = suma;
     }
     }
 

@@ -17,11 +17,11 @@ std::unique_ptr<Solution> RowAlgorithmSolve::solve(const ProblemInstance& proble
   //Algoritmo por filas
   for (int i = 0; i < A.getRows(); i++) {
     for (int j = 0; j < B.getColumns(); j++) {
-      int suma = 0;
+      long long suma = 0;
       for (int k = 0; k < A.getColumns(); k++) {
-      suma += A[i][k] * B[k][j];
+      suma += A[i * k] * B[k * j];
       }
-      resultado[i][j] = suma;
+      resultado[i * j] = suma;
     }
     }
 
